@@ -1,15 +1,11 @@
 #include "fan.h"
 
-void setFanImages(const char *path, ... , Fan *f, int count) {
-    f->images = new GtkImage*;
+void setFanImages(const char **paths, Fan *f, int count) {
+    f->images = new GtkImage[];
     f->imageCount = count;
-    va_list args;
-    char *p;
-    int i = 0;
-    va_start (args, p)
-     f->images[i] = gtk_image_new_from_file (p);
-     i++;
-    va_end(args);    
+    for (int i = 0; i < count; i++) {
+        f->images[i] = gtk_image_new_from_file (p);
+    }
 }
 
 void changeState(Fan *f) {

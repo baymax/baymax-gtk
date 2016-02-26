@@ -10,7 +10,7 @@ struct Fan {
     int imageCount = 0;
 };
 
-void setFanImages(const char *path, ... , Fan *f, int count);
+void setFanImages(const char **paths, Fan *f, int count);
 void changeState(Fan *f);
 
 #endif // FAN_H
