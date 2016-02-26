@@ -2,9 +2,9 @@
 CC = g++
 
 
-LIBS = `pkg-config --libs gtk+-3.0`
+LIBS = `pkg-config --libs gtk+-3.0` -std=c++11
 
-CFLAGS = `pkg-config --cflags gtk+-3.0` -Iheader/
+CFLAGS = `pkg-config --cflags gtk+-3.0` -std=c++11 -Iheader/
 
 HEADER_DIR = header/
 SRC_DIR = src/
