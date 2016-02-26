@@ -14,7 +14,7 @@ EXECUTABLE = baymax
 
 ALL: $(EXECUTABLE)
 
-$(OBJ_DIR)fan.o: $(SRC_DIR)fan.c $(HEADER_DIR)fan.header
+$(OBJ_DIR)fan.o: $(SRC_DIR)fan.c $(HEADER_DIR)fan.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(OBJ_DIR)main.o: $(SRC_DIR)main.cpp $(OBJ_DIR)fan.o
