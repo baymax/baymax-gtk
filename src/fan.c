@@ -1,7 +1,7 @@
 #include "fan.h"
 
 void setFanImages(const char **paths, Fan *f, int count) {
-    f->images = new GtkImage[count]*;
+    f->images = new *GtkImage[count];
     f->imageCount = count;
     for (int i = 0; i < count; i++) {
         f->images[i] = gtk_image_new_from_file (paths[i]);
