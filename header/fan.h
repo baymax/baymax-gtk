@@ -5,7 +5,7 @@
 
 struct Fan {
     GtkButton *button = NULL;
-    GtkImage *images = NULL;
+    GtkImage **images = NULL;
     int currentImage = 0;
     int imageCount = 0;
 };
