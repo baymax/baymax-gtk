@@ -1,6 +1,5 @@
 #include <gtk/gtk.h>
-#include "fan.h"
-
+#include 
 
 static void
 print_hello (GtkWidget *widget,
@@ -9,43 +8,41 @@ print_hello (GtkWidget *widget,
   g_print ("Hello World\n");
 }
 
-static void
-activate (GtkApplication* app,
-          gpointer        user_data)
-{
-  GtkWidget *window;
-GtkWidget *button;
-GtkWidget *button_box;
-
-
-  window = gtk_application_window_new (app);
-  gtk_window_set_title (GTK_WINDOW (window), "Window");
- gtk_window_set_default_size (GTK_WINDOW (window), 800, 500);
-        //gtk_window_maximize(GTK_WINDOW (window));
-  button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-  gtk_container_add (GTK_CONTAINER (window), button_box);
-
-  button = gtk_button_new_with_label ("Hello World");
- gtk_widget_set_size_request(button, 200, 200);
- g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
-  g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
-  gtk_container_add (GTK_CONTAINER (button_box), button);
-
-
-  gtk_widget_show_all (window);
-}
+static void toggleCarSettings(GtkWidget *widget, gpointer data);
+static void toggleBatterySettings()
 
 int
-main (int    argc,
-      char **argv)
+main (int   argc,
+      char *argv[])
 {
-  GtkApplication *app;
-  int status;
+  GtkBuilder *builder;
+  GObject *window;
+  GObject *button;
+  GObject *batteryManagerButton;
+  GObject *carSettingsButton;
+  GObject *comfortSettingsButton;
 
-  app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
-  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-  status = g_application_run (G_APPLICATION (app), argc, argv);
-  g_object_unref (app);
+  gtk_init (&argc, &argv);
 
-  return status;
+  /* Construct a GtkBuilder instance and load our UI description */
+  //builder = gtk_builder_new ();
+  builder = gtk_builder_new_from_file ("/home/jaska/Dropbox/baymax-gtk/ui/main.ui");
+  //gtk_builder_add_from_file (builder, "~/Dropbox/baymax-gtk/ui/builder.ui", NULL);
+
+  /* Connect signal handlers to the constructed widgets. */
+  window = gtk_builder_get_object (builder, "window");
+  g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+
+  button = gtk_builder_get_object (builder, "batteryManagerButton");
+  g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
+
+  button = gtk_builder_get_object (builder, "carSettingsButton");
+  g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
+
+  button = gtk_builder_get_object (builder, "comfortSettingsButton");
+  g_signal_connect (button, "clicked", G_CALLBACK (gtk_main_quit), NULL);
+
+  gtk_main ();
+
+  return 0;
 }
