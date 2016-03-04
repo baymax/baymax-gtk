@@ -1,0 +1,8 @@
+#ifndef UIFUNCTIONALITYPRIVATE_H
+#define UIFUNCTIONALITYPRIVATE_H
+
+#include <gtk/gtk.h>
+
+
+
+#endif // UIFUNCTIONALITYPRIVATE_H

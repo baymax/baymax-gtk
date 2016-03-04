@@ -5,25 +5,23 @@
   <object class="GtkImage" id="batteryManagerImg">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="xalign">0.15000000596046448</property>
+    <property name="yalign">0.15000000596046448</property>
     <property name="pixbuf">BatteryManagement.png</property>
+    <property name="pixel_size">5</property>
   </object>
   <object class="GtkImage" id="carSettingsImg">
+    <property name="width_request">50</property>
+    <property name="height_request">50</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="pixbuf">CarSettingsMenu.png</property>
-  </object>
-  <object class="GtkImage" id="comfortImg">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">Comfort.png</property>
   </object>
   <object class="GtkWindow" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
     <property name="title">baymax</property>
-    <property name="default_width">1000</property>
-    <property name="default_height">500</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -93,10 +91,12 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="comfortSettingsButton">
+                    <property name="width_request">200</property>
+                    <property name="height_request">200</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="image">comfortImg</property>
+                    <property name="use_stock">True</property>
                     <signal name="clicked" handler="on_comfortSettingsButton_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -120,12 +120,9 @@
           </packing>
         </child>
         <child>
-          <object class="GtkViewport" id="viewport2">
+          <object class="GtkViewport" id="functionsContainer">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <child>
-              <placeholder/>
-            </child>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -135,5 +132,12 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkImage" id="comfortImg">
+    <property name="width_request">100</property>
+    <property name="height_request">100</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">Comfort.png</property>
   </object>
 </interface>
