@@ -68,6 +68,12 @@ void loadCarSettingsUi(const char *path) {
     g_signal_connect (button, "clicked", G_CALLBACK (setDownForceOn), NULL);
     button = gtk_builder_get_object (carSettingsBuilder, "setDownForceOffButton");
     g_signal_connect (button, "clicked", G_CALLBACK (setDownForceOff), NULL);
+    
+    button = gtk_builder_get_object (carSettingsBuilder, "regenerationOnButton");
+    g_signal_connect (button, "clicked", G_CALLBACK (setRegenerationOn), NULL);
+    button = gtk_builder_get_object (carSettingsBuilder, "regenerationOffButton");
+    g_signal_connect (button, "clicked", G_CALLBACK (setRegenerationOff), NULL);
+    
 }
 
 void loadInteriorBuilder(const char *path) {

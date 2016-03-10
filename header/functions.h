@@ -1,6 +1,7 @@
 #include <gtk/gtk.h>
 #include "pipeline.h"
-#include "commandconst.h"
+//#include "commandconst.h"
+#include "cmdconst.h"
 
 // Carsettings functions
 
@@ -13,6 +14,9 @@ void setSuspensionLow(GtkWidget *widget, gpointer data);
 
 void setDownForceOff(GtkWidget *widget, gpointer data);
 void setDownForceOn(GtkWidget *widget, gpointer data);
+
+void setRegenerationOn(GtkWidget *widget, gpointer data);
+void setRegenerationOff(GtkWidget *widget, gpointer data);
 
 
 

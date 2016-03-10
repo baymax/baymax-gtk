@@ -8,6 +8,7 @@
 
 
 
+
 void toggleCarSettings(GtkWidget *widget, gpointer data);
 void toggleBatterySettings(GtkWidget *widget, gpointer data);
 void toggleComfortSettings(GtkWidget *widget, gpointer data);

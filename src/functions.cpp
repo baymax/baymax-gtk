@@ -1,31 +1,39 @@
 #include "functions.h"
 
 void sportMode(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SPORT_MODE_ON);
+    sendSender(SPORT_MODE, 1);
 }
 
 void normalMode(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SPORT_MODE_OFF);
+    sendSender(SPORT_MODE, 0);
 }
 
 void setSuspensionHigh(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SUSPENSION_MODE_HIGH);
+    sendSender(SUSPENSION_MODE, 2);
 }
 
 void setSuspensionNormal(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SUSPENSION_MODE_NORMAL);
+    sendSender(SUSPENSION_MODE, 1);
 }
 
 void setSuspensionLow(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SUSPENSION_MODE_LOW);
+    sendSender(SUSPENSION_MODE, 0);
 }
 
 void setDownForceOff(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SPOILER_MODE_OFF);
+    sendSender(SPOILER_MODE, 0);
 }
 
 void setDownForceOn(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(SPOILER_MODE_AUTO);
+    sendSender(SPOILER_MODE, 1);
+}
+
+void setRegenerationOn(GtkWidget *widget, gpointer data) {
+    sendSender(REGENERATION, 1);
+}
+
+void setRegenerationOff(GtkWidget *widget, gpointer data) {
+    sendSender(REGENERATION, 0);
 }
 
 
@@ -37,17 +45,17 @@ void setDownForceOn(GtkWidget *widget, gpointer data) {
 // Interior settings
 
 void setFanSpeed1(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(FAN_SPEED_1);
+    sendSender(FAN_SPEED, 1);
 }
 
 void setFanSpeed2(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(FAN_SPEED_2);
+    sendSender(FAN_SPEED, 2);
 }
 
 void setFanSpeed3(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(FAN_SPEED_3);
+    sendSender(FAN_SPEED, 3);
 }
 
 void setFanSpeed4(GtkWidget *widget, gpointer data) {
-    sendCommandToSender(FAN_SPEED_4);
+    sendSender(FAN_SPEED, 4);
 }

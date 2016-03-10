@@ -6,4 +6,4 @@
 #include <unistd.h>
 
 
-void sendCommandToSender(int32_t cmd);
+void sendSender(unsigned char cmd, unsigned char data);
