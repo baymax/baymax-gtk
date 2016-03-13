@@ -1,21 +1,17 @@
 #include "main.h"
 #include <stdio.h>
-
-static void
-print_hello (GtkWidget *widget,
-             gpointer   data)
-{
-  g_print ("Hello World\n");
-}
-
+#include "pipeline.h"
+#include <gtk/gtk.h>
 
 
 int
 main (int   argc,
       char *argv[])
 {
+    GError    *error = NULL;
     initPipeLine();
-    //printf("ulilli");
+    int a = 5;
+    g_thread_new("reader", readUi, &a); 
     initWindow(argc, argv);
     
     

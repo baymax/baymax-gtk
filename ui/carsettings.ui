@@ -26,7 +26,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setSuspensionLowButton">
+          <object class="GtkToggleButton" id="setSuspensionLowButton">
             <property name="label" translatable="yes">Matala</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -39,7 +39,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setSuspensionNormalButton">
+          <object class="GtkToggleButton" id="setSuspensionNormalButton">
             <property name="label" translatable="yes">Normaali</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -52,7 +52,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setSuspensionHighButton">
+          <object class="GtkToggleButton" id="setSuspensionHighButton">
             <property name="label" translatable="yes">Korkea</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -91,7 +91,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setSportModeButton">
+          <object class="GtkToggleButton" id="setSportModeButton">
             <property name="label" translatable="yes">Sporttinen moodi</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -104,7 +104,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setNormalModeButton">
+          <object class="GtkToggleButton" id="setNormalModeButton">
             <property name="label" translatable="yes">Amismoodi</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -144,7 +144,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setDownForceOnButton">
+          <object class="GtkToggleButton" id="setDownForceOnButton">
             <property name="label" translatable="yes">Spoileri</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -157,7 +157,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setDownForceOffButton">
+          <object class="GtkToggleButton" id="setDownForceOffButton">
             <property name="label" translatable="yes">Ei spoileria</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -196,7 +196,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="regenerationOnButton">
+          <object class="GtkToggleButton" id="regenerationOnButton">
             <property name="label" translatable="yes">Päällä</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -209,7 +209,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="regenerationOffButton">
+          <object class="GtkToggleButton" id="regenerationOffButton">
             <property name="label" translatable="yes">Pois päältä</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

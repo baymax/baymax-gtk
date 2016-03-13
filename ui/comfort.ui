@@ -25,7 +25,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setFanSpeed1Button">
+          <object class="GtkToggleButton" id="setFanSpeed1Button">
             <property name="label" translatable="yes">1</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -38,7 +38,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setFanSpeed2Button">
+          <object class="GtkToggleButton" id="setFanSpeed2Button">
             <property name="label" translatable="yes">2</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -51,7 +51,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setFanSpeed3Button">
+          <object class="GtkToggleButton" id="setFanSpeed3Button">
             <property name="label" translatable="yes">3</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -64,7 +64,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="setFanSpeed4Button">
+          <object class="GtkToggleButton" id="setFanSpeed4Button">
             <property name="label" translatable="yes">4</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

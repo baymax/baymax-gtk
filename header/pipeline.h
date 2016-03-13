@@ -4,6 +4,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <gtk/gtk.h>
 
 
 void sendSender(unsigned char cmd, unsigned char data);
+gpointer readUi(gpointer user_data);
