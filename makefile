@@ -15,7 +15,7 @@ HEADER_FILES = $(HEADER_DIR)*.h
 SOURCE_FILES = $(SRC_DIR)*.cpp
 OBJ_FILES = $(OBJ_DIR)*.o
 
-EXECUTABLE = baymax
+EXECUTABLE = baymax-gtk
 
 ALL: $(EXECUTABLE)
 

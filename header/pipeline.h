@@ -1,3 +1,6 @@
+#ifndef PIPELINE_H
+#define PIPELINE_H
+
 #include <stdint.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -9,3 +12,6 @@
 
 void sendSender(unsigned char cmd, unsigned char data);
 gpointer readUi(gpointer user_data);
+
+
+#endif // PIPELINE_H
