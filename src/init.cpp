@@ -3,10 +3,10 @@
 
 void initWindow(int argc, char *argv[]) {
   gtk_init (&argc, &argv);
-  loadMainUi("/home/jaska/Dropbox/baymax-gtk/ui/main.ui");
-  loadCarSettingsUi("/home/jaska/Dropbox/baymax-gtk/ui/carsettings.ui");
-  loadInteriorBuilder("/home/jaska/Dropbox/baymax-gtk/ui/comfort.ui");
-  loadBatteryManagerBuilder("/home/jaska/Dropbox/baymax-gtk/ui/batterymanager.ui");
+  loadMainUi("/usr/share/baymax/ui/main.ui");
+  loadCarSettingsUi("/usr/share/baymax/ui/carsettings.ui");
+  loadInteriorBuilder("/usr/share/baymax/ui/comfort.ui");
+  loadBatteryManagerBuilder("/usr/share/baymax/ui/batterymanager.ui");
 
   gtk_main ();
 }

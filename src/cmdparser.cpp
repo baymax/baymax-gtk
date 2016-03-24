@@ -2,6 +2,7 @@
 #include "uifunctionality.h"
 
 void parseCmd(unsigned char cmd, unsigned char data) {
+    DoorCombinationParameters p;
     switch (cmd) {
         case BATTERY_VOLTAGE:
             batStateData d;
@@ -25,6 +26,25 @@ void parseCmd(unsigned char cmd, unsigned char data) {
         break;
         case REGENERATION:
             gdk_threads_add_idle(setRegeneration, &data);
-        break;   
+        break;
+        case DOOR_DRIVER:
+            doorDriverState = data;
+            gdk_threads_add_idle(setDoor, &p);
+        break;
+        case DOOR_PASSENGER:
+            doorPassengerState = data;
+            gdk_threads_add_idle(setDoor, &p);        
+        break;
+        case DOOR_HOOD:
+            doorHoodState = data;
+            gdk_threads_add_idle(setDoor, &p);       
+        break;
+        case DOOR_TRUNK:
+            doorTrunkState = data;
+            gdk_threads_add_idle(setDoor, &p);       
+        break;
+        default:
+        
+        break; 
     }
 }

@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-#include "pipeline.h"
+
 //#include "commandconst.h"
 #include "cmdconst.h"
 

@@ -7,19 +7,24 @@
 #include "functions.h"
 
 
-
+extern unsigned char doorDriverState;
+extern unsigned char doorPassengerState;
+extern unsigned char doorHoodState;
+extern unsigned char doorTrunkState;
 
 void toggleCarSettings(GtkWidget *widget, gpointer data);
 void toggleBatterySettings(GtkWidget *widget, gpointer data);
 void toggleComfortSettings(GtkWidget *widget, gpointer data);
+void toggleDoorsStates();
 
 gboolean changeBatteryState(gpointer data);
 gboolean changeBatteryCurrent(gpointer data);
 
-gboolean setDoorDriver(gpointer data);
+gboolean setDoor(gpointer data);
+/*gboolean setDoorDriver(gpointer data);
 gboolean setDoorPassenger(gpointer data);
 gboolean setDoorHood(gpointer data);
-gboolean setDoorTrunk(gpointer data);
+gboolean setDoorTrunk(gpointer data);*/
 gboolean setReserve(gpointer data);
 gboolean setFanSpeed(gpointer data);
 gboolean setSuspensionMode(gpointer data);
@@ -38,6 +43,11 @@ void loadBatteryManagerBuilder(const char *path);
 
 struct batStateData {
     int value;
+};
+
+struct DoorCombinationParameters {
+    unsigned char door;
+    unsigned char mode;
 };
 
 /*
