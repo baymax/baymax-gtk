@@ -2,7 +2,149 @@
 <interface>
   <!-- interface-requires gtk+ 2.12 -->
   <!-- interface-naming-policy toplevel-contextual -->
-   
+  <object class="GtkImage" id="batStateImg10">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery10.png</property>
+  </object>
+  <object class="GtkImage" id="batStateImg100">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery100.png</property>
+  </object>
+  <object class="GtkImage" id="batStateImg20">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery20.png</property>
+  </object>
+  <object class="GtkImage" id="batStateImg5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery5.png</property>
+  </object>
+  <object class="GtkImage" id="batStateImg60">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery60.png</property>
+  </object>
+  <object class="GtkImage" id="batStateImg80">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">battery80.png</property>
+  </object>
+  <object class="GtkImage" id="batteryManagerImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="xalign">0.15000000596046448</property>
+    <property name="yalign">0.15000000596046448</property>
+    <property name="pixbuf">BatteryManagement.png</property>
+    <property name="pixel_size">5</property>
+  </object>
+  <object class="GtkViewport" id="carDoorStatesContainer">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkImage" id="currentCarDoorStateImg">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="pixbuf">doorCombination5Img.png</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="carSettingsImg">
+    <property name="width_request">50</property>
+    <property name="height_request">50</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">CarSettingsMenu.png</property>
+  </object>
+  <object class="GtkImage" id="combination10Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination10Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination11Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination11Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination12Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination12Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination13Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination13Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination14Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination14Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination15Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination15Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination16Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination16Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination1Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination1Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination2Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination2Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination3Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination3Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination4Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination4Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination5Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination5Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination6Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination6Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination7Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination7Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination8Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination8Img.png</property>
+  </object>
+  <object class="GtkImage" id="combination9Img">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">doorCombination9Img.png</property>
+  </object>
+  <object class="GtkImage" id="comfortImg">
+    <property name="width_request">100</property>
+    <property name="height_request">100</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">Comfort.png</property>
+  </object>
   <object class="GtkWindow" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -62,7 +204,15 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkLabel" id="temperatureLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -148,153 +298,4 @@
       </object>
     </child>
   </object>
-  <object class="GtkViewport" id="carDoorStatesContainer">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-        <object class="GtkImage" id="currentCarDoorStateImg">
-            <property name="pixbuf">doorCombination5Img.png</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-        </object>
-    </child>
-  </object>
-  
-  <!-- Battery state images -->
-  <object class="GtkImage" id="batStateImg10">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery10.png</property>
-  </object>
-  <object class="GtkImage" id="batStateImg100">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery100.png</property>
-  </object>
-  <object class="GtkImage" id="batStateImg20">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery20.png</property>
-  </object>
-  <object class="GtkImage" id="batStateImg5">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery5.png</property>
-  </object>
-  <object class="GtkImage" id="batStateImg60">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery60.png</property>
-  </object>
-  <object class="GtkImage" id="batStateImg80">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">battery80.png</property>
-  </object>
-  <!-- -->
-  <object class="GtkImage" id="batteryManagerImg">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="xalign">0.15000000596046448</property>
-    <property name="yalign">0.15000000596046448</property>
-    <property name="pixbuf">BatteryManagement.png</property>
-    <property name="pixel_size">5</property>
-  </object>
-  <object class="GtkImage" id="carSettingsImg">
-    <property name="width_request">50</property>
-    <property name="height_request">50</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">CarSettingsMenu.png</property>
-  </object>
-  <object class="GtkImage" id="comfortImg">
-    <property name="width_request">100</property>
-    <property name="height_request">100</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">Comfort.png</property>
-  </object>
-  
-  <!-- Car door combination images -->
-  <object class="GtkImage" id="combination1Img">
-    <property name="pixbuf">doorCombination1Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination2Img">
-    <property name="pixbuf">doorCombination2Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination3Img">
-    <property name="pixbuf">doorCombination3Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination4Img">
-    <property name="pixbuf">doorCombination4Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination5Img">
-    <property name="pixbuf">doorCombination5Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination6Img">
-    <property name="pixbuf">doorCombination6Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination7Img">
-    <property name="pixbuf">doorCombination7Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination8Img">
-    <property name="pixbuf">doorCombination8Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination9Img">
-    <property name="pixbuf">doorCombination9Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination10Img">
-    <property name="pixbuf">doorCombination10Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination11Img">
-    <property name="pixbuf">doorCombination11Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination12Img">
-    <property name="pixbuf">doorCombination12Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination13Img">
-    <property name="pixbuf">doorCombination13Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination14Img">
-    <property name="pixbuf">doorCombination14Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination15Img">
-    <property name="pixbuf">doorCombination15Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  <object class="GtkImage" id="combination16Img">
-    <property name="pixbuf">doorCombination16Img.png</property>
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-  </object>
-  
 </interface>

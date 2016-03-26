@@ -14,9 +14,8 @@ void closeSenderPipe();
 void openGtkPipe();
 void closeGtkPipe();
 void sendToSender(unsigned char cmd, unsigned char data);
-gpointer readUi(gpointer user_data);
 void* reader(void* data);
 
-
+//
 
 #endif // PIPELINE_H

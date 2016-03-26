@@ -28,6 +28,11 @@ GObject *window;
 
 GtkContainer *mainContainer;
 
+float batteryVoltage = 0;
+unsigned char baytteryVoltagePrecent = 0;
+int batteryCurrent = 0;
+unsigned char batteryCurrentPrecent = 0;
+
 // Car door combination images
 
 GtkContainer *carDoorStatesContainer;
@@ -73,9 +78,20 @@ GtkToggleButton *downForceOffButton;
 GtkToggleButton *regenerationOnButton;
 GtkToggleButton *regenerationOffButton;
 
+
+unsigned char suspensionState = 0;
+unsigned char spoilerMode = 0;
+unsigned char regenereationMode = 0;
+unsigned char reserveState = 0;
+unsigned char sportModeState = 0;
+
 //
 
 // Interior settings
+
+float outTemp = 0;
+
+GtkLabel *tempLabel;
 
 GtkToggleButton *fanSpeed1Button;
 GtkToggleButton *fanSpeed2Button;
@@ -85,27 +101,30 @@ GtkToggleButton *fanSpeed4Button;
 GtkToggleButton *interiorLightOnButton;
 GtkToggleButton *interiorLightOffButton;
 
+unsigned char interiorLigthState;
+unsigned char fanSpeed;
+
 //n
 
 
 void toggleCarSettings(GtkWidget *widget, gpointer data) {
 	gtk_container_remove (mainContainer, interiorSettingsWidget);
 	gtk_container_remove (mainContainer, batteryManagementWidget); 
-    gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
+	gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
 	gtk_container_add(mainContainer, carSettingsUiWidget);       
 }
 
 void toggleBatterySettings(GtkWidget *widget, gpointer data) {
 	gtk_container_remove (mainContainer, interiorSettingsWidget);
 	gtk_container_remove (mainContainer, carSettingsUiWidget); 
-    gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
+	gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
 	gtk_container_add(mainContainer, batteryManagementWidget);
 }
 
 void toggleComfortSettings(GtkWidget *widget, gpointer data) {
 	gtk_container_remove (mainContainer, carSettingsUiWidget);
 	gtk_container_remove (mainContainer, batteryManagementWidget); 
-    gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
+	gtk_container_remove (mainContainer, GTK_WIDGET(carDoorStatesContainer));
 	gtk_container_add(mainContainer, interiorSettingsWidget);
 }
 
@@ -113,43 +132,39 @@ void toggleDoorsStates() {
 	gtk_container_remove (mainContainer, carSettingsUiWidget);
 	gtk_container_remove (mainContainer, batteryManagementWidget); 
 	gtk_container_remove (mainContainer, interiorSettingsWidget);
-    gtk_container_add(mainContainer, GTK_WIDGET(carDoorStatesContainer));
+	gtk_container_add(mainContainer, GTK_WIDGET(carDoorStatesContainer));
 }
 
 
 gboolean changeBatteryState(gpointer data) {
-	batStateData *d = (batStateData*)data;
-	//d.value = 10;
-	printf("%d", d->value);
-	//int procent = (int)state;
 	char labelText[10];
-	if (d->value > 100) {
+	if (baytteryVoltagePrecent > 100) {
 		snprintf(labelText, 10, "%d", 100);
 	} else {
-		snprintf(labelText, 10, "%d", d->value);
+		snprintf(labelText, 10, "%d", baytteryVoltagePrecent);
 	}
 	gtk_label_set_text(batLevelLabel, labelText);
-	if (d->value >= 5 && d->value < 10) {
+	if (baytteryVoltagePrecent >= 0 && baytteryVoltagePrecent < 10) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg5));
 		batStateImg = batStateImg5;
-	} else if (d->value >= 10 && d->value < 20) {
+	} else if (baytteryVoltagePrecent >= 10 && baytteryVoltagePrecent < 20) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg10));
 		batStateImg = batStateImg10;
-	} else if (d->value >= 20 && d->value < 60) {
+	} else if (baytteryVoltagePrecent >= 20 && baytteryVoltagePrecent < 60) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg20));
 		batStateImg = batStateImg20;
-	} else if (d->value >= 60 && d->value <= 80) {
+	} else if (baytteryVoltagePrecent >= 60 && baytteryVoltagePrecent <= 80) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg60));
 		batStateImg = batStateImg60;
-	} else if (d->value >= 80 && d->value < 90) {
+	} else if (baytteryVoltagePrecent >= 80 && baytteryVoltagePrecent < 90) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg80));
 		batStateImg = batStateImg80;
-	} else if (d->value >= 90) {
+	} else if (baytteryVoltagePrecent >= 90) {
 		gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 		gtk_container_add(batBox, GTK_WIDGET(batStateImg100));
 		batStateImg = batStateImg100;
@@ -162,125 +177,48 @@ gboolean changeBatteryCurrent(gpointer data) {
 }
 
 gboolean setDoor(gpointer data) {
-    //printf("Asetetaan ovea");a
-    //toggleDoorsStates();
-	//DoorCombinationParameters *p = (DoorCombinationParameters*)data;
-    //printf("driverdoor = %d", doorDriverState);
-    			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination12Img));
-			//currentCarDoorState = doorCombination12Img;	
-	/*if (p.door == DOOR_DRIVER) doorDriverState = p.mode;
-	else if (p.door == DOOR_PASSENGER) doorDriverState = p.mode;
-	else if (p.door == DOOR_HOOD) doorHoodState = p.mode;
-	else if (p.door == DOOR_TRUNK) doorTrunkState = p.mode;*/
 	if (doorDriverState && doorPassengerState && doorHoodState && doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination1Img));
-		//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-		//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination1Img));
-		//currentCarDoorState = doorCombination1Img;
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination1Img));
 	} else if (doorDriverState && doorPassengerState && doorHoodState && !doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination2Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination2Img));
-			//currentCarDoorState = doorCombination2Img;	
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination2Img));
 	} else if (doorDriverState && doorPassengerState && !doorHoodState && doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination3Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination3Img));
-			//currentCarDoorState = doorCombination3Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination3Img));	
 	} else if (doorDriverState && doorPassengerState && !doorHoodState && !doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination4Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination4Img));
-			//currentCarDoorState = doorCombination4Img;	
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination4Img));
 	} else if (doorDriverState && !doorPassengerState && doorHoodState && doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination5Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination5Img));
-			//currentCarDoorState = doorCombination5Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination5Img));		
 	} else if (doorDriverState && !doorPassengerState && doorHoodState && !doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination6Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination6Img));
-			//currentCarDoorState = doorCombination6Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination6Img));		
 	} else if (doorDriverState && !doorPassengerState && !doorHoodState && doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination7Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination7Img));
-			//currentCarDoorState = doorCombination7Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination7Img));		
 	} else if (doorDriverState && !doorPassengerState && !doorHoodState && !doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination8Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination8Img));
-			//currentCarDoorState = doorCombination8Img;	
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination8Img));
 	} else if (!doorDriverState && doorPassengerState && doorHoodState && doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination9Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination9Img));
-			//currentCarDoorState = doorCombination9Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination9Img));	
 	} else if (!doorDriverState && doorPassengerState && doorHoodState && !doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination10Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination10Img));
-			//currentCarDoorState = doorCombination10Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination10Img));	
 	} else if (!doorDriverState && doorPassengerState && !doorHoodState && doorTrunkState) {
-            gtk_button_set_image (carButton, GTK_WIDGET(doorCombination11Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination11Img));
-			//currentCarDoorState = doorCombination11Img;		
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination11Img));		
 	} else if (!doorDriverState && doorPassengerState && !doorHoodState && !doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination12Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination12Img));
-			//currentCarDoorState = doorCombination12Img;			
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination12Img));		
 	} else if (!doorDriverState && !doorPassengerState && doorHoodState && doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination13Img));
-			//gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination13Img));
-			//currentCarDoorState = doorCombination13Img;			
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination13Img));		
 	} else if (!doorDriverState && !doorPassengerState && doorHoodState && !doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination14Img));
-		//	gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-			//gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination14Img));
-		//	currentCarDoorState = doorCombination14Img;			
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination14Img));	
 	} else if (!doorDriverState && doorPassengerState && doorHoodState && !doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination15Img));
-		//	gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-		//	gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination15Img));
-		//	currentCarDoorState = doorCombination15Img;			
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination15Img));		
 	} else if (!doorDriverState && !doorPassengerState && !doorHoodState && !doorTrunkState) {
-        gtk_button_set_image (carButton, GTK_WIDGET(doorCombination16Img));
-		//	gtk_container_remove(carDoorStatesContainer, GTK_WIDGET(currentCarDoorState));
-		//	gtk_container_add(carDoorStatesContainer, GTK_WIDGET(doorCombination16Img));
-		//	currentCarDoorState = doorCombination16Img;			
+		gtk_button_set_image (carButton, GTK_WIDGET(doorCombination16Img));	
 	}     
-        return G_SOURCE_REMOVE;
+	return G_SOURCE_REMOVE;
 }    
 
-/*gboolean setDoorDriver(gpointer data) {
-	return G_SOURCE_REMOVE;
-}
-
-gboolean setDoorPassenger(gpointer data) {
-	return G_SOURCE_REMOVE;
-}
-
-gboolean setDoorHood(gpointer data) {
-	return G_SOURCE_REMOVE;
-}
-
-gboolean setDoorTrunk(gpointer data) {
-	return G_SOURCE_REMOVE;
-}
- */
 gboolean setReserve(gpointer data) {
 	return G_SOURCE_REMOVE;
 }
 
 gboolean setFanSpeed(gpointer data) {
-	
-	char value = *((char*)data);
-	switch (value) {
+	switch (fanSpeed) {
 		case 1:
 			g_object_set(G_OBJECT(fanSpeed1Button), "active", TRUE);
 			g_object_set(G_OBJECT(fanSpeed2Button), "active", FALSE);
@@ -313,9 +251,8 @@ gboolean setFanSpeed(gpointer data) {
 }
 
 gboolean setSuspensionMode(gpointer data) {
-	char value = *((char*)data);
-	printf("Setting suspension mode to %d\n", value);
-	switch(value) {
+	printf("Setting suspension to %d", suspensionState);
+	switch(suspensionState) {
 		case 0:
 			g_object_set(G_OBJECT(suspensionLowButton), "active", TRUE);
 			g_object_set(G_OBJECT(suspensionNormalButton), "active", FALSE);
@@ -330,8 +267,7 @@ gboolean setSuspensionMode(gpointer data) {
 			g_object_set(G_OBJECT(suspensionHighButton), "active", TRUE);
 			g_object_set(G_OBJECT(suspensionNormalButton), "active", FALSE);
 			g_object_set(G_OBJECT(suspensionLowButton), "active", FALSE);        
-		break;
-		
+		break;	
 	}
 	return G_SOURCE_REMOVE;
 }
@@ -341,8 +277,8 @@ gboolean setInteriorLigth(gpointer data) {
 }
 
 gboolean setSpoilerMode(gpointer data) {
-		char value = *((char*)data);
-	switch(value) {
+	printf("Setting spoiler mode to %d", spoilerMode);
+	switch(spoilerMode) {
 		case 0:
 			g_object_set(G_OBJECT(downForceOffButton), "active", TRUE);
 			g_object_set(G_OBJECT(downForceOnButton), "active", FALSE);
@@ -356,8 +292,8 @@ gboolean setSpoilerMode(gpointer data) {
 }
 
 gboolean setSportMode(gpointer data) {
-		char value = *((char*)data);
-	switch(value) {
+	printf("Setting sportMode to %d", sportModeState);
+	switch(sportModeState) {
 		case 0:
 			g_object_set(G_OBJECT(normalModeButton), "active", TRUE);
 			g_object_set(G_OBJECT(sportModeButton), "active", FALSE);
@@ -371,8 +307,8 @@ gboolean setSportMode(gpointer data) {
 }
 
 gboolean setRegeneration(gpointer data) {
-		char value = *((char*)data);
-	switch(value) {
+	printf("Setting regenereation to %d", regenereationMode);
+	switch(regenereationMode) {
 		case 0:
 			g_object_set(G_OBJECT(regenerationOffButton), "active", TRUE);
 			g_object_set(G_OBJECT(regenerationOnButton), "active", FALSE);   
@@ -383,6 +319,12 @@ gboolean setRegeneration(gpointer data) {
 		break;        
 	}
 	return G_SOURCE_REMOVE;
+}
+
+gboolean setOutTemp(gpointer data) {
+	char labelText[10];
+	snprintf(labelText, 10, "%f", outTemp);
+	gtk_label_set_text(tempLabel, labelText);	
 }
 
 
@@ -418,6 +360,10 @@ void loadMainUi(const char *path) {
 	gtk_container_remove(batBox, GTK_WIDGET(batStateImg));
 	gtk_container_add(batBox, GTK_WIDGET(batStateImg80));
 	batStateImg = batStateImg80;
+	
+	// Loading temperature label
+	
+	tempLabel = GTK_LABEL(gtk_builder_get_object(mainBuilder, "temperatureLabel"));
 	
 	
 	// Loading doorcombinationimages

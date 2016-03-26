@@ -23,9 +23,11 @@ ALL: $(EXECUTABLE)
 #$(OBJ_DIR)fan.o: $(SRC_DIR)fan.c $(HEADER_DIR)fan.h
 #	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)cmdparser.o: $(SRC_DIR)cmdparser.cpp $(HEADER_DIR)cmdparser.h
+$(OBJ_DIR)convert.o: $(SRC_DIR)convert.c $(HEADER_DIR)convert.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
+$(OBJ_DIR)cmdparser.o: $(SRC_DIR)cmdparser.cpp $(HEADER_DIR)cmdparser.h $(OBJ_DIR)convert.o
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(OBJ_DIR)pipeline.o: $(SRC_DIR)pipeline.cpp $(HEADER_DIR)pipeline.h
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -55,5 +57,5 @@ debug: $(EXECUTABLE) run
 
 install: $(EXECUTABLE)
 	cp -R ui /usr/share/baymax/ui/
-	cp $(BIN_DIR)$(EXECUTABLE) /bin/$(EXECUTABLE)
-	chmod +x /bin/$(EXECUTABLE)
+	cp $(BIN_DIR)$(EXECUTABLE) /usr/bin/$(EXECUTABLE)
+	chmod +x /usr/bin/$(EXECUTABLE)
